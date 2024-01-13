@@ -1,1 +1,1 @@
-https://hub.docker.com/repository/docker/aratrika1996/myfirstapp/general
+https://hub.docker.com/repository/docker/aratrika1996/myfirstapp/
