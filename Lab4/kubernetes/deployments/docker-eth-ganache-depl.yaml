@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-eth-ganache-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-eth-ganache
+  template:
+    metadata:
+      labels:
+        app: docker-eth-ganache
+    spec:
+      containers:
+        - name: ganache
+          image: aratrika1996/docker-eth-ganache:latest
+          resources:
+            limits:
+              cpu: "250m" # 250 millicores
+              memory: "500Mi"
+          ports:
+            - containerPort: 8545

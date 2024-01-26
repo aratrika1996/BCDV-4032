@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-eth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-eth-frontend
+  template:
+    metadata:
+      labels:
+        app: docker-eth-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: aratrika1996/docker-eth-frontend:latest
+          resources:
+            limits:
+              cpu: "500m" # 500 millicores
+              memory: "500Mi"
+          ports:
+            - containerPort: 80
