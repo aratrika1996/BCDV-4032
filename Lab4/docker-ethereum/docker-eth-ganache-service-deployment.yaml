@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.service: docker-eth-ganache-service
+  name: docker-eth-ganache-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: docker-eth-ganache-service
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        io.kompose.network/docker-ethereum-default: "true"
+        io.kompose.service: docker-eth-ganache-service
+    spec:
+      containers:
+        - image: aratrika1996/docker-eth-ganache:latest
+          name: docker-eth-ganache-service
+          ports:
+            - containerPort: 8545
+              hostPort: 8545
+              protocol: TCP
+      restartPolicy: Always

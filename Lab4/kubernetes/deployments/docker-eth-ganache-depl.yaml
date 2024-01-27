@@ -13,7 +13,7 @@ spec:
         app: docker-eth-ganache
     spec:
       containers:
-        - name: ganache
+        - name: docker-eth-ganache
           image: aratrika1996/docker-eth-ganache:latest
           resources:
             limits:

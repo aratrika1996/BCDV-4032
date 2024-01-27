@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.service: docker-eth-service
+  name: docker-eth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: docker-eth-service
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        io.kompose.network/docker-ethereum-default: "true"
+        io.kompose.service: docker-eth-service
+    spec:
+      containers:
+        - image: aratrika1996/docker-eth-frontend:latest
+          name: docker-eth-service
+          ports:
+            - containerPort: 80
+              hostPort: 3000
+              protocol: TCP
+      restartPolicy: Always
