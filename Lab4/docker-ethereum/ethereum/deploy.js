@@ -9,7 +9,7 @@ const deploy = async (mymessage) => {
         // set the receipt path 
         const receiptPath = path.resolve("ethereum","receipt-"+web3Network+".json");
         console.log(`---------- receipt path -------- ${receiptPath}`);
-        // console.log(web3)
+        
         // deploying the contract with accounts[0]
         const accounts = await web3.eth.getAccounts();
         console.log(`Attempting to deploy from account , ${accounts[0]}`);
